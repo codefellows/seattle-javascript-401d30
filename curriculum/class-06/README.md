@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) HTTP and REST
-========================================================
+# HTTP and REST
 
 ## Learning Objectives
 

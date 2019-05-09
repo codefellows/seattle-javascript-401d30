@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Buffers
-=================================================
+# Buffers
 
 ## Learning Objectives
 * Students will learn how binary data is encoded and decoded

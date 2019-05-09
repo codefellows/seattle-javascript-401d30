@@ -1,0 +1,27 @@
+#create-form input[type=radio] {
+  display: inline-block;
+  font-size: 100px;
+  width: 5vw;
+  padding: 0;
+  margin-left: 2vw;
+  margin-top: 1vw;
+}
+
+#create-form form {
+  text-align: center;
+}
+
+#create-form span {
+  font-size: 5vw;
+}
+
+#create-form label {
+  font-size: 3vw;
+  margin-right: 2vw;
+  margin-left: 5vw;
+}
+
+#create-form button {
+  font-size: 3vw;
+  width: 80%;
+}

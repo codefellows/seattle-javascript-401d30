@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../layout/head') %>
+    <link rel="stylesheet" href="/styles/modules/books/show.css">
+  </head>
+  <body>
+    <%- include('../layout/header') %>
+    <main>
+      <h4>Saved Books</h4>
+      <p><%= books.length %> books in the Collection</p>
+      <ul id="book-list">
+        <% books.forEach(book => { %>
+          <li class="book-items" data-book-id="<%= book.id %>">
+            <%- include('books/detail', {book: book}) %>
+            <p class="detail-button"><a href="/books/<%= book.id %>">View Details</a></p>
+          </li>
+          </li>
+        <% }) %>
+      </ul>
+    </main>
+    <%- include('../layout/footer') %>
+  </body>
+</html>

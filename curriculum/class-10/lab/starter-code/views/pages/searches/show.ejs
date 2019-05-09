@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../../layout/head') %>
+    <link rel="stylesheet" href="/styles/modules/books/show.css">
+    <link rel="stylesheet" href="/styles/modules/searches/show.css">
+  </head>
+  <body>
+    <%- include('../../layout/header') %>
+    <main>
+      <h4>Search Results</h4>
+      <ul class="search-results">
+        <% results.forEach(book => { %>
+          <li data-book-id="<%= book.isbn %>">
+            <%- include('../books/detail', {book: book}) %>
+            <button class="select-button">Select This Book</button>
+            <form class="hide-me" action="/books" method="post">
+              <input type="text" name="title" value="<%= book.title %>" required>
+              <input type="text" name="author" value="<%= book.author %>" required>
+              <input type="text" name="isbn" value="<%= book.isbn %>">
+              <input type="text" name="image_url" value="<%= book.image_url %>">
+              <textarea name="description" value="<%= book.description %>" cols="30" rows="5"><%= book.description %></textarea>
+              <p>Enter a bookshelf name</p>
+              <input type="text" name="bookshelf" required>
+              <button id="show-me" type="submit">Add to Database</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </main>
+    <%- include('../../layout/footer') %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>

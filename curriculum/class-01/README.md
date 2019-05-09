@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Node Ecosystem
-=====================================
+# Node Ecosystem
 
 ## Learning Objectives
 * Students will be able to setup a NodeJS Package using npm

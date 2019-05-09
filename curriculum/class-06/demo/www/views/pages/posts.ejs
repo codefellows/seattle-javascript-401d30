@@ -1,0 +1,13 @@
+<h2><%= title %></h2>
+<section class="deck">
+  <% items.forEach(item => { %>
+    <div class="card">
+        <header>
+            <h2><%= item.title %></h2>
+            <span><%= item.author %></span>
+        </header>
+        <article><%= item.article %></article>
+    </div> 
+  <% }) %>
+</section>
+

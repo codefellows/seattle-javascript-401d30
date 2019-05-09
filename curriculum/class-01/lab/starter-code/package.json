@@ -1,0 +1,10 @@
+{
+  "name": "01-node-ecosystem",
+  "version": "0.0.1",
+  "description": "this will be sooooo cool",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {}
+}

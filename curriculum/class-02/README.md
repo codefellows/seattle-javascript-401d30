@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Classes, Inheritance, Functional Programming
-======================================================================================
+# Classes, Inheritance, Functional Programming
 
 ## Learning Objectives
 * Students will be able to create npm scripts for automating command line tasks

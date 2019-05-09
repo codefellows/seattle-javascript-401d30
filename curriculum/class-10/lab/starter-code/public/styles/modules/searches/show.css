@@ -1,0 +1,7 @@
+.hide-me {
+  display: none;
+}
+
+form button {
+  display: inline-block;
+}

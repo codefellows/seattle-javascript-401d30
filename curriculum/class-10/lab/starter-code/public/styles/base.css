@@ -1,0 +1,148 @@
+html, body {
+  background-color: #999;
+  color: #ddd;
+  font-family: 'helvetica';
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-top: 14vw;
+}
+
+p {
+  font-size: 3vw;
+  line-height: 1.5;
+  padding: 3vw;
+  text-align: inherit;
+}
+
+span {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  margin: 0px auto;
+  width: 50%;
+}
+
+li {
+  margin: 5vw;
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  font-size: 5vw;
+  line-height: 10vw;
+}
+
+h2 {
+  font-size: 5vw;
+  padding: 2vw;
+  text-align: center;
+}
+
+h3 {
+  font-size: 4vw;
+  color: #444;
+  text-decoration: underline;
+  text-align: center;
+}
+
+h4 {
+  font-size: 4vw;
+  padding: 5vw 2vw;
+  color: #ccc;
+  background: #444;
+  text-align: center;
+  text-decoration: none; 
+}
+
+form {
+  width: 80%;
+  margin: 2vw auto;
+}
+
+fieldset {
+  float: left;
+  width: 87.5%;
+  box-sizing: border-box;
+  margin-bottom: 5vw;
+  margin-left: 5vw;
+  padding: 2vw 5vw 2vw 0vw;
+  text-align: left;
+  background: #ccc;
+  color: #444;
+  border-radius: 3px;
+}
+
+fieldset label {
+  font-size: 4vw;
+}
+
+input, textarea {
+  display: block;
+  margin: 2vw auto;
+  padding: 1vw;
+  width: 80%;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #000;
+  font-size: 3vw;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  width: 80%;
+  padding: 3vw;
+  margin-bottom: 5vw;
+  font-size: 3vw;
+  border: none;
+  border-radius: 3px;
+  transition: 350ms all;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  background: #000;
+  color: #fff;
+}
+
+button {
+  display: block;
+  font-size: 4vw;
+  margin: 5px auto;
+  padding: 2vw;
+  width: 40%;
+}
+
+button[type="submit"] {
+  padding: 3vw;
+  background: #000;
+  color: #fff;
+  font-size: 4vw;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"].lng-btn {
+  width: 88%;
+  padding: 4vw;
+  font-size: 3vw;
+}

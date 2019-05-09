@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Async
-===============================================
+# Async
 
 ## Learning Objectives
 * Students will understand how synchronous and asynchronous code runs in the Javascript runtime

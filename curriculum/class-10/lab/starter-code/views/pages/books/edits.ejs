@@ -1,0 +1,16 @@
+<form id="update-form" class="hide-me" action="/books/<%= book.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" name="title" value="<%= book.title %>">
+  <input type="text" name="author" value="<%= book.author %>">
+  <input type="text" name="isbn" value="<%= book.isbn %>">
+  <input type="text" name="image_url" value="<%= book.image_url %>">
+  <textarea name="description" value="<%= book.description %>" cols="30" rows="5"><%= book.description %></textarea>
+
+  <select name="bookshelf_id" id="<%= book.bookshelf_id %>">
+    <% bookshelves.forEach(shelf => { %>
+    <% let selected = book.bookshelf_id===shelf.id ? 'selected' : '' %>
+    <option value="<%= shelf.id %>" <%= selected %>> <%= shelf.name %> </option>
+    <% }); %>
+  </select>
+  <button class="show-me" type="submit">Update Book</button>
+</form>
