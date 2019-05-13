@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Whiteboarding
-===================================================
+# Whiteboarding
 
 **[Pseudocode Guide](https://codefellows.github.io/common_curriculum/data_structures_and_algorithms/Pseudocode)**
 

@@ -1,5 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 401 Javascript: Post-Grad Roadmap
-=====================================
+# 401 Javascript: Post-Grad Roadmap
 
 So it’s after week 10 and the Code Fellows 401 JS class is now over. You’ve shut down MongoDB for a bit, slept for a few days straight, and now you’re up and ready to do something more. The frenzied pace that we’ve worked at for 2.5 months is gone, and the only pressure to perform is the pressure of unemployment. It’s terrifying, but it’s not as pressing when there isn’t a concrete deadline to hit.
 
