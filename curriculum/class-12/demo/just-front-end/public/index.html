@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Auth Test</title>
+    </head>
+    <body>
+        <main>
+
+            <div id="oauth"></div>
+
+        </main>
+
+        <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+
+        <script>
+
+          let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+
+          let options = {
+            client_id:'560654039720-5kmgrmq63ctu07hb8e973t589jio17qf.apps.googleusercontent.com',
+            redirect_uri: 'http://localhost:3000/oauth',
+            scope: 'email openid profile',
+            prompt: 'consent',
+            response_type: 'code'
+          };
+
+          let QueryString = Object.keys(options).map( (key,i) => {
+            return `${key}=` + encodeURIComponent(options[key]);
+          }).join("&");
+
+          let authURL = `${googleURL}?${QueryString}`;
+
+          $('#oauth').append(`<a href="${authURL}">Login With Google</a>`);
+
+        </script>
+
+
+    </body>
+</html>

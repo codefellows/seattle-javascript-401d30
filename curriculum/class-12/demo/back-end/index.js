@@ -1,11 +1,9 @@
-'use strict'; // this file will run when you type npm run start
+'use strict';
 
 require('dotenv').config();
-// .env -> process.env
 
 // Start up DB Server
 const mongoose = require('mongoose');
-// Vinicio - mongoose will complain if you you don't have this
 const options = {
   useNewUrlParser:true,
   useCreateIndex: true,

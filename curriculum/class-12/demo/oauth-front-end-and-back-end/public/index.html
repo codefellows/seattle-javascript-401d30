@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Auth Test</title>
+    </head>
+    <body>
+        <main>
+            <div id="oauth"></div>
+        </main>
+        <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script>
+          let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+
+          let options = {
+            client_id:'560987661468-t83ln0h4pk6aemi1tn3uk2lbgtnooime.apps.googleusercontent.com',
+            redirect_uri: 'http://localhost:3000/oauth/google',
+            scope: 'email openid profile',
+            prompt: 'consent',
+            response_type: 'code' // Vinicio - this has to be here no matter what
+          };
+
+          let QueryString = Object.keys(options).map( (key,i) => {
+            return `${key}=` + encodeURIComponent(options[key]);
+          }).join("&");
+
+          let authURL = `${googleURL}?${QueryString}`;
+
+          // Vinicio - the only thing this jquery is doing is adding a link to our DOM
+          $('#oauth').append(`<a href="${authURL}">Login With Google</a>`);
+        </script>
+    </body>
+</html>

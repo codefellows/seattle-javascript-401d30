@@ -12,15 +12,15 @@ authRouter.post('/signup', (request, response, next) => {
   // to create a user is stored in the request
   const user = new User(request.body);
   user.save() // Vinicio - here we are actually saving into our db
-    .then(user => {
+    .then(savedUser => {
       // Vinicio - this happens whenever I could save a user without any errors
       //-------------------------------------------------------------
-      request.token = user.generateToken();
-      request.user = user;
+      request.token = savedUser.generateToken();
+      request.user = savedUser;
       //-------------------------------------------------------------
       // Vinicio - noting I'm sending my token in two separate ways
       // Vinicio - no matter who is using my api, they can get the token
-      response.set('token', request.token); // Vinicio - header
+      response.set('token', request.token); // Vinicio - header (key, value)
       response.cookie('auth', request.token); // cellphones usually can't read cookies
       response.send(request.token);
     })
