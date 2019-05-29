@@ -21,9 +21,7 @@ users.pre('save', function(next) {
 });
 
 users.statics.authenticateToken = function(token) {
-  let parsedToken = jwt.verify(token, process.env.SECRET);
-  let query = {_id: parsedToken.id};
-  return this.findOne(query);
+  //TODO
 };
 
 users.statics.authenticateBasic = function(auth) {
