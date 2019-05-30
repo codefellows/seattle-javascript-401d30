@@ -2,24 +2,33 @@
 
 const User = require('./users-model.js');
 
-module.exports = (req, res, next) => {
+// This middleware is ready to accept both username/password OR a token
+// Vinicio - right now this code smells, it's breaking the SRP
+// Single Responsibility Principle
+module.exports = (request, response, next) => {
+  try { // Vinicio - this code smells a little bit too, I would refactor it to have some if logic
+    // Vinicio - my goal is that every line focuses on ONE thing and does that
+    // thing as best as it can
+    const authorizationHeader = request.headers.authorization; // chained structures can ba difficult to understand
 
-  // Basic am9objpqb2hubnk=
-  // Bearer Token ...
-  try {
-    let [authType, authString] = req.headers.authorization.split(/\s+/);
+    // if(!authorizationHeader) {
+    //
+    // }
+
+    const splitHeader = authorizationHeader.split(/\s+/);
+    let [authType, authString] = splitHeader;
 
     switch( authType.toLowerCase() ) {
       case 'basic':
         return _authBasic(authString);
       case 'bearer':
-        //TODO
+        return _authBearer(authString);
       default:
-        return _authError();
+        return response.status(404).send();
     }
   }
   catch(e) {
-    console.log(e);
+    return response.status(404).send();
   }
 
 
@@ -35,14 +44,23 @@ module.exports = (req, res, next) => {
       .catch(next);
   }
 
-  function _authBearer(authString) {
-    //TODO
+  // Vinicio - one of important decisions a developer makes is to name entities
+  // Vinicio - a good name is a specific name, a bad name is an ambiguous name
+  function _authBearer(token) {
+    try {
+      return User.authenticateToken(token)
+        .then(_authenticate) // Vinicio - _authenticate requires user
+        .catch(next); // Vinicio - here I'm calling next with no arguments
+    }
+    catch(error){
+      response.status(404).send();
+    }
   }
 
   function _authenticate(user) {
     if(user) {
-      req.user = user;
-      req.token = user.generateToken();
+      request.user = user;
+      request.token = user.generateToken();
       next();
     }
     else {

@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jsonWebToken = require('jsonwebtoken');
 
 const users = new mongoose.Schema({
   username: {type:String, required:true, unique:true},
@@ -21,7 +21,12 @@ users.pre('save', function(next) {
 });
 
 users.statics.authenticateToken = function(token) {
-  //TODO
+  const decryptedToken = jsonWebToken.verify(token, process.env.SECRET);
+  // Vinicio - if this function works, we know that the token was decrypted
+  // Vinicio - I'm just following const correctness rules from C++ and airBnB JS
+
+  const query = {_id: decryptedToken.id};
+  return this.findOne(query);
 };
 
 users.statics.authenticateBasic = function(auth) {
@@ -41,7 +46,7 @@ users.methods.generateToken = function() {
     id: this._id,
     role: this.role,
   };
-  return jwt.sign(token, process.env.SECRET);
+  return jsonWebToken.sign(token, process.env.SECRET);
 };
 
 module.exports = mongoose.model('users', users);
