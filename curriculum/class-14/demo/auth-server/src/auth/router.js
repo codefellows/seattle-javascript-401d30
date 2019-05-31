@@ -33,8 +33,14 @@ authRouter.get('/oauth', (req,res,next) => {
     .catch(next);
 });
 
-authRouter.post('/key', auth, (req,res,next) => {
-  // TODO
+authRouter.post('/key', auth(), (request,response,next) => {
+  const key = request.user.generateKey();
+  response.status(200).send(key);
+});
+
+
+authRouter.patch('/jp', auth('update') ,(request,response,next) => {
+  response.status(200).send('What is JP?');
 });
 
 module.exports = authRouter;

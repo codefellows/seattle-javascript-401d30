@@ -2,10 +2,19 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jsonWebToken = require('jsonwebtoken');
 require('./roles-model.js');
 
-// TODO
+// ----------------------------------------------------------------------
+// CONFIGURATION VALUES
+// ----------------------------------------------------------------------
+const TOKEN_LIFETIME = process.env.TOKEN_LIFETIME || '1m';
+// Vinicio - I want this value to be true or false
+const SINGLE_USE_TOKEN = !!process.env.SINGLE_USE_TOKENS;
+const SECRET = process.env.SECRET || 'foobar';
+
+const usedTokens = new Set();
+// ----------------------------------------------------------------------
 
 const users = new mongoose.Schema({
   username: {type:String, required:true, unique:true},
@@ -15,8 +24,11 @@ const users = new mongoose.Schema({
 });
 
 const capabilities = {
-  //TODO
+  admin:  ['create', 'read', 'update', 'delete'],
+  editor: ['create', 'read', 'update'],
+  user:   [ 'read'],
 };
+
 
 users.pre('save', function(next) {
   bcrypt.hash(this.password, 10)
@@ -45,8 +57,24 @@ users.statics.createFromOauth = function(email) {
 };
 
 users.statics.authenticateToken = function(token) {
-  //TOODO
+  // Vinicio - you can (and probably should) improve this with storage (DB)
+  if(usedTokens.has(token)) { // O(1)
+    return Promise.reject('Invalid Token');
+  }
+  try {
+    const parsedToken = jsonWebToken.verify(token, SECRET);
 
+    if(SINGLE_USE_TOKEN && parsedToken.type !== 'key') {
+      usedTokens.add(token);
+    }
+    // (SINGLE_USE_TOKEN) && parsedToken.type !== 'key' && usedTokens.add(token);
+
+    let query = {_id: parsedToken.id};
+    return this.findOne(query);
+
+  } catch(error) {
+    return Promise.reject('Invalid Token');
+  }
 };
 
 users.statics.authenticateBasic = function(auth) {
@@ -61,16 +89,31 @@ users.methods.comparePassword = function(password) {
     .then( valid => valid ? this : null);
 };
 
+// Vinicio - type is going to be used to create key tokens
 users.methods.generateToken = function(type) {
-  //TODO
+  const token = {
+    id: this._id,
+    capabilities: capabilities[this.role],
+    type: type || 'user',
+  };
+
+  const options = {};
+
+  if(type !== 'key' && !!TOKEN_LIFETIME) {
+    // Vinicio - I want to setup an expiration date
+    options.expiresIn = TOKEN_LIFETIME;
+  }
+  return jsonWebToken.sign(token, SECRET, options);
 };
 
 users.methods.can = function(capability) {
-  // TODO
+  // Vinicio - I can use this method to see a user can do something
+  // This function may need to change is your code once you incorporate the new model
+  return capabilities[this.role].includes(capability);
 };
 
 users.methods.generateKey = function() {
-  //TODO
+  return this.generateToken('key');
 };
 
 module.exports = mongoose.model('users', users);

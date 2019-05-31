@@ -2,12 +2,12 @@
 
 const User = require('./users-model.js');
 
-module.exports = (//TODO
-
-  return (req, res, next) => {
+// Vinicio - this is going to be a curried middleware now
+module.exports = (capability) => {
+  return (request, response, next) => {
 
     try {
-      let [authType, authString] = req.headers.authorization.split(/\s+/);
+      let [authType, authString] = request.headers.authorization.split(/\s+/);
 
       switch (authType.toLowerCase()) {
         case 'basic':
@@ -40,7 +40,15 @@ module.exports = (//TODO
     }
 
     function _authenticate(user) {
-      //TODO
+      // Vinicio - is this user valid? AND can they do the capability?
+      const capabilityCheck = !capability || user.can(capability);
+      if(user && capabilityCheck) {
+        request.user = user;
+        request.token = user.generateToken();
+        next();
+      } else {
+        _authError();
+      }
     }
 
     function _authError() {

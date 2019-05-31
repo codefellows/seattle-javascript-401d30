@@ -124,11 +124,35 @@ describe('Auth Middleware', () => {
 
   describe('user authorization', () => {
     it('restricts access to a valid user without permissions', () => {
-      // TODO
+      const request = {
+        headers: {
+          authorization: 'Basic YH*#*##U#USHES',
+        },
+      };
+      const response = {};
+      const next = jest.fn();
+      let middleware = auth('khaleesi');
+
+      return middleware(request,response,next)
+        .then(() => {
+          expect(next).toHaveBeenCalledWith("Invalid User ID/Password");
+          } );
     }); // it()
 
     it('grants access when a user has permission', () => {
-      // TODO
+      const request = {
+        headers: {
+          authorization: 'Basic YWRtaW46cGFzc3dvcmQ=',
+        },
+      };
+      const response = {};
+      const next = jest.fn();
+      let middleware = auth('delete');
+
+      return middleware(request,response,next)
+        .then(() => {
+          expect(next).toHaveBeenCalledWith();
+        } );
     }); // it()
 
   }); // describe()
