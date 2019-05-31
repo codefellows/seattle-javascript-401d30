@@ -14,12 +14,19 @@ let users = {
 };
 
 let roles = {
-  //TODO
+  admin: {role: 'admin', capabilities:['create','read','update','delete']},
+  editor: {role: 'editor', capabilities:['create','read','update']},
+  user: {role: 'user', capabilities:['read']},
 };
 
 beforeAll(async (done) => {
   await startDB();
-  // TODO
+  const admin = await new Users(users.admin).save();
+  const editor = await new Users(users.editor).save();
+  const user = await new Users(users.user).save();
+  const adminRole = await new Roles(roles.admin).save();
+  const editorRole = await new Roles(roles.editor).save();
+  const userRole = await new Roles(roles.user).save();
   done()
 });
 
@@ -76,7 +83,7 @@ describe('Auth Middleware', () => {
       // the middleware doesn't return a promise but instead throws an
       // error in the main catch block, so this assertion validates that
       // behavior instead of a standard promise signature
-      middleware(req, res, next)
+      middleware(req, res, next);
       expect(next).toHaveBeenCalledWith(errorMessage);
 
     }); // it()
@@ -120,39 +127,45 @@ describe('Auth Middleware', () => {
       });
 
     }); // it()
+
   });
 
   describe('user authorization', () => {
+
     it('restricts access to a valid user without permissions', () => {
-      const request = {
-        headers: {
-          authorization: 'Basic YH*#*##U#USHES',
-        },
-      };
-      const response = {};
-      const next = jest.fn();
-      let middleware = auth('khaleesi');
 
-      return middleware(request,response,next)
-        .then(() => {
-          expect(next).toHaveBeenCalledWith("Invalid User ID/Password");
-          } );
-    }); // it()
-
-    it('grants access when a user has permission', () => {
-      const request = {
+      let req = {
         headers: {
           authorization: 'Basic YWRtaW46cGFzc3dvcmQ=',
         },
       };
-      const response = {};
-      const next = jest.fn();
+      let res = {};
+      let next = jest.fn();
+      let middleware = auth('godpower');
+
+      return middleware(req,res,next)
+      .then( () => {
+        expect(next).toHaveBeenCalledWith(errorMessage);
+      });
+
+    }); // it()
+
+    it('grants access when a user has permission', () => {
+
+      let req = {
+        headers: {
+          authorization: 'Basic YWRtaW46cGFzc3dvcmQ=',
+        },
+      };
+      let res = {};
+      let next = jest.fn();
       let middleware = auth('delete');
 
-      return middleware(request,response,next)
-        .then(() => {
-          expect(next).toHaveBeenCalledWith();
-        } );
+      return middleware(req,res,next)
+      .then( () => {
+        expect(next).toHaveBeenCalledWith();
+      });
+
     }); // it()
 
   }); // describe()

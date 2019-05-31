@@ -73,7 +73,7 @@ users.statics.authenticateToken = function(token) {
     return this.findOne(query);
 
   } catch(error) {
-    return Promise.reject('Invalid Token');
+    throw new Error('Invalid Token');
   }
 };
 

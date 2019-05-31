@@ -54,7 +54,6 @@ module.exports = (capability) => {
     function _authError() {
       next('Invalid User ID/Password');
     }
-
   };
 
 };
