@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Simple/> rendering follows the snapshot 1`] = `
+<section
+  className="Simple"
+>
+  <span>
+    Value: 
+    false
+  </span>
+  <button
+    onClick={[Function]}
+  >
+    Change Value
+  </button>
+</section>
+`;
