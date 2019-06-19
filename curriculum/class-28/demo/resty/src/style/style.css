@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#root > main {
+  flex: 1;
+}
