@@ -92,6 +92,7 @@ users.methods.comparePassword = function(password) {
 // Vinicio - type is going to be used to create key tokens
 users.methods.generateToken = function(type) {
   const token = {
+		// Vinicio from the future - Remember, NEVER store keys or secrets in your token
     id: this._id,
     capabilities: capabilities[this.role],
     type: type || 'user',
