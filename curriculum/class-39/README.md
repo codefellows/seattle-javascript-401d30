@@ -1,15 +1,9 @@
-# Socket.io Client
+# Remote CRUD
 
 ## Learning Objectives
 
 **Students will be able to ...**
-
-* Create and deploy a Socket.io server
-* Create and deploy a Socket.io client
-* Wire up events and listeners (Pub/Sub) on both ends
-* Connect a react application to a realtime server using socket.io
-* Subscribe to remote events
-* Emit events and data back to the server
+* Fully interact with a RESTful API from a React Application
 
 ## Outline
 * :05 **Housekeeping/Recap**
@@ -21,11 +15,8 @@
 * Break
 * :60 **Main Topic**
 
-## Main Topic: Socket.io
-* What is Socket.io?
-  * Keeps a pipe open between client and server
-  * Keeps communication pathway open
-  * Responds to events that one side or the other `emits`
-  * Publish an Event `socket.emit('run', tellEveryoneToRun)`
-  * Respond to an Event `socket.on('run', doTheRunningMan)`
-* On the React side, you can respond to an event and add it's payload to state, or use a state change to trigger an `emit`
+## Main Topic:
+* Implement REST actions through Redux
+* Where do we normalize data?
+* How do we handle errors?
+* How do we handle different methods?
