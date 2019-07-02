@@ -2,7 +2,6 @@
 
 ## Learning Objectives
 
-**Students will be able to ...**
 * Implement a generic form using Redux Form
 * Implement a generic standard form using JSON Schema
 * Connect form data back to the store
