@@ -1,0 +1,42 @@
+.people {
+    
+    display:flex;
+    flex-direction:row;
+
+    .person {
+        flex:1;
+        background: #eee;
+        padding: 0 .5em;
+
+        div {
+            display:flex;
+
+            span:nth-child(1) {
+                font-weight:bold;
+                margin-right: 1em;
+            }
+            span:nth-child(2) {
+                flex:1;
+            }
+        }
+    }
+
+    ul {
+        list-style-type:none;
+        margin:0;
+        padding:0;
+
+        li {
+            border: 1px solid blue;
+            cursor: pointer;
+            margin: .25em 0;
+            padding:.5em 0;
+            width: 200px;
+
+            &:hover {
+                background: aliceblue;
+            }
+        }
+
+    }
+}
