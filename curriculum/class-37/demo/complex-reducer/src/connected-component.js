@@ -7,7 +7,7 @@ class ConnectedComponent extends React.Component  {
       <>
         <ul>
         {
-          this.props.categories.map(category => <li> {category.name} </li>)
+          this.props.categories.map(category => <li key={category.name}> {category.name} </li>)
         }
         </ul>
       </>
