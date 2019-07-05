@@ -1,0 +1,29 @@
+{
+  "name": "lab-remote-crud",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.7.0",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
+    "react-jsonschema-form": "1.0.6",
+    "react-redux": "5.1.1",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "4.0.1",
+    "redux-devtools-extension": "2.13.7",
+    "redux-form": "7.4.2",
+    "redux-thunk": "2.3.0",
+    "superagent": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
