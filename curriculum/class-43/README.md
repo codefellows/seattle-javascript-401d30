@@ -1,18 +1,23 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Javascript Frameworks
-===========================================================
+![cf](http://i.imgur.com/7v5ASc8.png) React Native
+==================================================
 
 ## Learning Objectives
 
 **Students will be able to ...**
-* Live in a world where Express and React aren't the only players...
-* Have a basic understanding of how other frameworks are installed and implemented
-* Have a basis to compare and contrast these and others that may be encountered.
 
-## Computer Science Concept:
-* Apache
-* NGINX
-* mySQL
+* Get a simple "hello world" application up and running on mobile devices
+* Understand the react-native workflow
+
+## UI Concept:
+* Device Components and Limitations
 
 ## Main Topic:
-**[TODO MVC](http://todomvc.com/)**
-
+* React Native Ecosystem
+  * expo
+  * expo-cli
+  * expo snack
+  * XCode
+  * Android Studio
+  * App Store
+  * Google Play
+* Getting Started with React Native Apps

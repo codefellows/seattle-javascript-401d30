@@ -1,0 +1,11 @@
+C:\Users\vinicio\source\repos\HelloCSharp\bin\Debug\netcoreapp2.2\HelloCSharp.deps.json
+C:\Users\vinicio\source\repos\HelloCSharp\bin\Debug\netcoreapp2.2\HelloCSharp.runtimeconfig.json
+C:\Users\vinicio\source\repos\HelloCSharp\bin\Debug\netcoreapp2.2\HelloCSharp.runtimeconfig.dev.json
+C:\Users\vinicio\source\repos\HelloCSharp\bin\Debug\netcoreapp2.2\HelloCSharp.dll
+C:\Users\vinicio\source\repos\HelloCSharp\bin\Debug\netcoreapp2.2\HelloCSharp.pdb
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.csprojAssemblyReference.cache
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.csproj.CoreCompileInputs.cache
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.AssemblyInfoInputs.cache
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.AssemblyInfo.cs
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.dll
+C:\Users\vinicio\source\repos\HelloCSharp\obj\Debug\netcoreapp2.2\HelloCSharp.pdb
